@@ -16,7 +16,7 @@ from __future__ import absolute_import, unicode_literals
 
 # Celery settings
 
-CELERY_BROKER_URL = 'amqp://catalog:catalog@localhost:5672/catalog_vhost'
+CELERY_BROKER_URL = 'amqp://catalog:catalog@localhost:5672/catalog'
 
 #: Only add pickle to this list if your broker is secured
 #: from unwanted access (see userguide/security.html)
@@ -70,7 +70,7 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',

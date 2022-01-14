@@ -15,7 +15,7 @@ from keras.layers.core import Dense, Dropout, Flatten
 import c3d.configuration as cfg
 from keras.layers.convolutional import Conv3D, MaxPooling3D, ZeroPadding3D
 import numpy as np
-from scipy.misc import imresize
+import cv2
 from keras.utils.data_utils import get_file
 
 # C3D_MEAN_PATH = 'https://github.com/adamcasson/c3d/releases/download/v0.1/c3d_mean.npy'
@@ -38,7 +38,7 @@ def preprocess_input(video):
     # Reshape to 128x171
     reshape_frames = np.zeros((frames.shape[0], 128, 171, frames.shape[3]))
     for i, img in enumerate(frames):
-        img = imresize(img, (128, 171), 'bicubic')
+        img = cv2.resize(img, (128, 171))
         reshape_frames[i, :, :, :] = img
 
     # mean_path = get_file('c3d_mean.npy',

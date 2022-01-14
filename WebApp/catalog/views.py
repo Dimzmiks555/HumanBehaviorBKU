@@ -27,6 +27,9 @@ from c3d.plot_controller import get_score
 from c3d.configuration import weight_default_path, weight32_path, weight64_path
 from catalog.utils.utils import load_annotation, format_filesize, url_downloadable, write_file, get_basename
 
+
+from django.views.decorators.csrf import csrf_exempt
+
 def index(request):
     """View function for home page of site."""
 
@@ -103,7 +106,7 @@ class C3dNewView(generic.TemplateView):
         context['annotation'] = json.dumps(load_annotation(annotation_path).tolist())
         context['c3dnew'] = True
 
-        filename_npy = settings.MEDIA_ROOT + video.file_score32.name
+        filename_npy = settings.MEDIA_ROOT + video.title
         print(filename_npy)
         
         if os.path.exists(filename_npy):
@@ -184,6 +187,8 @@ class VideoUploadView(View):
         return JsonResponse(response)
 
 class GetScoreView(View):
+
+    @csrf_exempt
     def post(self, request):
         isC3Dnew = request.POST.get('isC3Dnew')
         video_path = request.POST.get('video_path')
