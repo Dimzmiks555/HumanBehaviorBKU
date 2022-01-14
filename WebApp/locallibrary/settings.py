@@ -21,7 +21,7 @@ CELERY_BROKER_URL = 'amqp://catalog:catalog@localhost:5672/catalog'
 #: Only add pickle to this list if your broker is secured
 #: from unwanted access (see userguide/security.html)
 CELERY_ACCEPT_CONTENT = ['json']
-CELERY_RESULT_BACKEND = 'amqp'
+CELERY_RESULT_BACKEND = 'rpc'
 CELERY_TASK_TRACK_STARTED = True
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
@@ -33,6 +33,9 @@ os.environ.setdefault('FORKED_BY_MULTIPROCESSING', '1')
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+#DISABLE CUDA
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
 
 # Quick-start development settings - unsuitable for production

@@ -4,6 +4,8 @@ from math import factorial
 
 def sliding_window(arr, size, stride):
     num_chunks = int((len(arr) - size) / stride) + 2
+    print(num_chunks)
+    print('GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG')
     result = []
     for i in range(0,  num_chunks * stride, stride):
         if len(arr[i:i + size]) > 0:

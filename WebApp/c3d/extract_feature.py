@@ -11,7 +11,6 @@ def extract_feature_video(video_path, progress_recorder, features_per_bag = para
 
     # read video
     video_clips, num_frames = get_video_clips(video_path)
-
     print("Number of clips in the video : ", len(video_clips))
 
     # build models
@@ -35,6 +34,7 @@ def extract_feature_video(video_path, progress_recorder, features_per_bag = para
         print("Processed clip : ", i)
 
     rgb_features = np.array(rgb_features)
+    print(rgb_features)
     
     # bag features
     rgb_feature_bag = interpolate(rgb_features, features_per_bag)

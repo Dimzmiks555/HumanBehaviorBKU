@@ -207,7 +207,8 @@ class GetScoreView(View):
 
             scores = load_npy(filename_npy)
         else:
-            x, scores = get_score(video_path, weights_path, int(no_segment))
+            x, scores = get_score(video_path, weights_path, int(no_segment)) 
+            #int(no_segment)
         scores = scores.tolist()
         data = {'is_valid': True, 'scores': scores}
         return JsonResponse(data)

@@ -28,11 +28,11 @@ def xsum(numbers):
 def extract_feature(self, video_id):
     progress_recorder = ProgressRecorder(self)
     video = Video.objects.get(id = video_id)
-    video_path =  settings.MEDIA_ROOT + video.file.name
+    video_path =  settings.MEDIA_ROOT + video.title
     score32 = extract_feature_video(video_path, progress_recorder, 32)
     score64 = extract_feature_video(video_path, progress_recorder, 64)
-    file_score32 = 'media/features/' + get_basename(video.file.name) + '_32.npy'
-    file_score64 = 'media/features/' + get_basename(video.file.name) + '_64.npy'
+    file_score32 = 'media/features/' + get_basename(video.title) + '_32.npy'
+    file_score64 = 'media/features/' + get_basename(video.title) + '_64.npy'
     np.save(file_score32, score32)
     np.save(file_score64, score64)
     video.file_score32.name = file_score32[6:]
